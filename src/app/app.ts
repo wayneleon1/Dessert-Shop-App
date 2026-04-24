@@ -9,7 +9,7 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
   standalone: true,
   imports: [CommonModule, ProductGridComponent, CartComponent, OrderConfirmationComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   showConfirmation = signal(false);
@@ -19,6 +19,10 @@ export class App {
   }
 
   onStartNewOrder(): void {
+    this.showConfirmation.set(false);
+  }
+
+  onClose(): void {
     this.showConfirmation.set(false);
   }
 }

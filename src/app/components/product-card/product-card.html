@@ -1,11 +1,6 @@
 <div class="product-card" [class.in-cart]="isInCart">
   <div class="product-image-wrapper">
-    <img
-      [src]="dessert.image.thumbnail"
-      [alt]="dessert.name"
-      class="product-image"
-      loading="lazy"
-    />
+    <img [src]="dessert.image.desktop" [alt]="dessert.name" class="product-image" loading="lazy" />
     <div class="cart-control">
       @if (!isInCart) {
         <button class="btn-add-to-cart" (click)="addToCart()">
