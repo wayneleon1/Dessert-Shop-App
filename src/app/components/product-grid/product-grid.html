@@ -1,0 +1,8 @@
+<section class="product-grid-section">
+  <h1 class="section-title">Desserts</h1>
+  <div class="product-grid">
+    @for (dessert of desserts; track dessert.id) {
+      <app-product-card [dessert]="dessert" />
+    }
+  </div>
+</section>

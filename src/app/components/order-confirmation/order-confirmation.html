@@ -1,0 +1,48 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="check-icon">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="23" stroke="#1EA575" stroke-width="2" />
+        <path
+          d="M14 24L21 31L34 17"
+          stroke="#1EA575"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <h2 class="modal-title">Order Confirmed</h2>
+    <p class="modal-subtitle">We hope you enjoy your food!</p>
+
+    <div class="order-summary">
+      @for (item of confirmedItems; track item.dessert.id) {
+        <div class="summary-item">
+          <img
+            [src]="item.dessert.image.thumbnail"
+            [alt]="item.dessert.name"
+            class="item-thumbnail"
+          />
+          <div class="item-info">
+            <p class="item-name">{{ item.dessert.name }}</p>
+            <p class="item-qty-price">
+              <span class="qty">{{ item.quantity }}x</span>
+              <span class="unit-price">&#64; \${{ item.dessert.price.toFixed(2) }}</span>
+            </p>
+          </div>
+          <span class="item-line-total"
+            >\${{ (item.quantity * item.dessert.price).toFixed(2) }}</span
+          >
+        </div>
+      }
+
+      <div class="total-row">
+        <span class="total-label">Order Total</span>
+        <span class="total-amount">\${{ confirmedTotal.toFixed(2) }}</span>
+      </div>
+    </div>
+
+    <button class="new-order-btn" (click)="onStartNewOrder()">Start New Order</button>
+  </div>
+</div>

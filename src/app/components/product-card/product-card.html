@@ -1,0 +1,48 @@
+<div class="product-card" [class.in-cart]="isInCart">
+  <div class="product-image-wrapper">
+    <img
+      [src]="dessert.image.thumbnail"
+      [alt]="dessert.name"
+      class="product-image"
+      loading="lazy"
+    />
+    <div class="cart-control">
+      @if (!isInCart) {
+        <button class="btn-add-to-cart" (click)="addToCart()">
+          <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+            <path
+              d="M19.5 3.5H4.91L4.5 1.5H0.5V3.5H2.5L5.5 14.5H17.5L19.5 3.5Z"
+              stroke="#C73B0F"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="8.5" cy="17.5" r="1.5" fill="#C73B0F" />
+            <circle cx="14.5" cy="17.5" r="1.5" fill="#C73B0F" />
+          </svg>
+          Add to Cart
+        </button>
+      } @else {
+        <div class="quantity-control">
+          <button class="qty-btn" (click)="decrement()">
+            <svg width="10" height="2" viewBox="0 0 10 2" fill="none">
+              <path d="M1 1H9" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+          <span class="qty-value">{{ quantity }}</span>
+          <button class="qty-btn" (click)="increment()">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M5 1V9M1 5H9" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="product-info">
+    <span class="product-category">{{ dessert.category }}</span>
+    <h3 class="product-name">{{ dessert.name }}</h3>
+    <p class="product-price">${{ dessert.price.toFixed(2) }}</p>
+  </div>
+</div>

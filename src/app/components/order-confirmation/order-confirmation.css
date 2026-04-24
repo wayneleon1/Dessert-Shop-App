@@ -1,0 +1,156 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 592px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.check-icon {
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #260F08;
+  margin: 0 0 8px 0;
+  line-height: 120%;
+}
+
+.modal-subtitle {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #87635A;
+  margin: 0 0 32px 0;
+}
+
+.order-summary {
+  background: #F5EEEC;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #CAAFA7;
+}
+
+.summary-item:first-child {
+  padding-top: 0;
+}
+
+.item-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #260F08;
+  margin: 0 0 4px 0;
+  line-height: 150%;
+}
+
+.item-qty-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.qty {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #C73B0F;
+}
+
+.unit-price {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #87635A;
+}
+
+.item-line-total {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #260F08;
+  flex-shrink: 0;
+}
+
+.total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.total-label {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #260F08;
+}
+
+.total-amount {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #260F08;
+}
+
+.new-order-btn {
+  width: 100%;
+  background: #C73B0F;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 24px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.new-order-btn:hover {
+  background: #952C0B;
+}

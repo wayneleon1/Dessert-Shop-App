@@ -1,12 +1,24 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ProductGridComponent } from './components/product-grid/product-grid';
+import { CartComponent } from './components/cart/cart';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, ProductGridComponent, CartComponent, OrderConfirmationComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Dessert-Shop-App');
+  showConfirmation = signal(false);
+
+  onConfirmOrder(): void {
+    this.showConfirmation.set(true);
+  }
+
+  onStartNewOrder(): void {
+    this.showConfirmation.set(false);
+  }
 }

@@ -1,0 +1,56 @@
+<aside class="cart-panel">
+  <h2 class="cart-title">Your Cart ({{ totalItems }})</h2>
+
+  @if (items.length === 0) {
+    <div class="cart-empty">
+      <div class="empty-illustration">
+        <svg width="128" height="108" viewBox="0 0 128 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cake illustration -->
+          <ellipse cx="64" cy="80" rx="48" ry="12" fill="#CAAFA7" opacity="0.3"/>
+          <rect x="28" y="42" width="72" height="40" rx="4" fill="#CAAFA7"/>
+          <rect x="36" y="30" width="56" height="18" rx="4" fill="#87635A"/>
+          <rect x="52" y="18" width="24" height="16" rx="4" fill="#CAAFA7"/>
+          <rect x="60" y="10" width="8" height="12" rx="4" fill="#C73B0F"/>
+          <circle cx="64" cy="8" r="4" fill="#C73B0F" opacity="0.7"/>
+          <!-- Fork -->
+          <path d="M96 55 L96 80 M90 55 L90 65 Q96 68 96 65 L102 55 L102 65 Q96 68 96 65" stroke="#87635A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="empty-text">Your added items will appear here</p>
+    </div>
+  } @else {
+    <div class="cart-items">
+      @for (item of items; track item.dessert.id) {
+        <div class="cart-item">
+          <div class="item-details">
+            <p class="item-name">{{ item.dessert.name }}</p>
+            <div class="item-meta">
+              <span class="item-qty">{{ item.quantity }}x</span>
+              <span class="item-unit-price">&#64; \${{ item.dessert.price.toFixed(2) }}</span>
+              <span class="item-total">\${{ (item.quantity * item.dessert.price).toFixed(2) }}</span>
+            </div>
+          </div>
+          <button class="remove-btn" (click)="removeItem(item.dessert.id)" aria-label="Remove item">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M1 1L9 9M9 1L1 9" stroke="#87635A" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="order-total-row">
+      <span class="total-label">Order Total</span>
+      <span class="total-amount">\${{ orderTotal.toFixed(2) }}</span>
+    </div>
+
+    <div class="carbon-neutral-badge">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm-1 12l-4-4 1.41-1.41L9 11.17l6.59-6.58L17 6l-8 8z" fill="#1EA575"/>
+      </svg>
+      <p>This is a <strong>carbon-neutral</strong> delivery</p>
+    </div>
+
+    <button class="confirm-btn" (click)="onConfirmOrder()">Confirm Order</button>
+  }
+</aside>

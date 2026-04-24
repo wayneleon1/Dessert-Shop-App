@@ -1,0 +1,13 @@
+.app-layout {
+  min-height: 100vh;
+  background: #FCF8F6;
+  padding: 88px 88px;
+}
+
+.main-content {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+}
