@@ -21,8 +21,14 @@
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .check-icon {
@@ -33,7 +39,7 @@
   font-family: 'Red Hat Text', sans-serif;
   font-size: 40px;
   font-weight: 700;
-  color: #260F08;
+  color: #260f08;
   margin: 0 0 8px 0;
   line-height: 120%;
 }
@@ -42,12 +48,12 @@
   font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #87635A;
+  color: #87635a;
   margin: 0 0 32px 0;
 }
 
 .order-summary {
-  background: #F5EEEC;
+  background: #f5eeec;
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 24px;
@@ -58,7 +64,7 @@
   align-items: center;
   gap: 16px;
   padding: 16px 0;
-  border-bottom: 1px solid #CAAFA7;
+  border-bottom: 1px solid #caafa7;
 }
 
 .summary-item:first-child {
@@ -82,7 +88,7 @@
   font-family: 'Red Hat Text', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #260F08;
+  color: #260f08;
   margin: 0 0 4px 0;
   line-height: 150%;
 }
@@ -98,21 +104,21 @@
   font-family: 'Red Hat Text', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #C73B0F;
+  color: #c73b0f;
 }
 
 .unit-price {
   font-family: 'Red Hat Text', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #87635A;
+  color: #87635a;
 }
 
 .item-line-total {
   font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #260F08;
+  color: #260f08;
   flex-shrink: 0;
 }
 
@@ -127,19 +133,19 @@
   font-family: 'Red Hat Text', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #260F08;
+  color: #260f08;
 }
 
 .total-amount {
   font-family: 'Red Hat Text', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #260F08;
+  color: #260f08;
 }
 
 .new-order-btn {
   width: 100%;
-  background: #C73B0F;
+  background: #c73b0f;
   color: #fff;
   border: none;
   border-radius: 999px;
@@ -152,5 +158,44 @@
 }
 
 .new-order-btn:hover {
-  background: #952C0B;
+  background: #952c0b;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 24px;
+    max-width: 100%;
+  }
+
+  .modal-title {
+    font-size: 32px;
+  }
+
+  .modal-subtitle,
+  .item-name,
+  .qty,
+  .unit-price,
+  .item-line-total,
+  .total-label,
+  .total-amount {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 18px;
+  }
+
+  .modal-title {
+    font-size: 28px;
+  }
+
+  .order-summary {
+    padding: 18px;
+  }
+
+  .summary-item {
+    gap: 12px;
+  }
 }

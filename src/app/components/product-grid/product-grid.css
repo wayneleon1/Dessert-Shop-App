@@ -7,7 +7,7 @@
   font-family: 'Red Hat Text', sans-serif;
   font-size: 40px;
   font-weight: 700;
-  color: #260F08;
+  color: #260f08;
   margin: 0 0 32px 0;
   line-height: 120%;
 }
@@ -16,4 +16,28 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px 24px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 20px;
+  }
+}
+
+/* Small tablet / large phone */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 16px 16px;
+  }
 }

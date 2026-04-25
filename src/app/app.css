@@ -1,14 +1,32 @@
 .app-layout {
   min-height: 100vh;
   background: #fcf8f6;
-  padding: 88px 88px;
+  padding: 88px 112px;
 }
 
 .main-content {
   display: flex;
   gap: 32px;
   align-items: flex-start;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   max-width: 1216px;
   margin: 0 auto;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .app-layout {
+    padding: 40px 40px;
+  }
+  .main-content {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .app-layout {
+    padding: 24px;
+  }
 }
