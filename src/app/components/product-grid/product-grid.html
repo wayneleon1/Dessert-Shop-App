@@ -1,8 +1,37 @@
 <section class="product-grid-section">
   <h1 class="section-title">Desserts</h1>
+
+  <div class="product-controls">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Search desserts…"
+      [value]="searchTerm()"
+      (input)="onSearch($event)"
+    />
+
+    <select class="filter-select" [value]="selectedCategory()" (change)="onCategoryChange($event)">
+      <option value="">All Categories</option>
+      @for (cat of categories(); track cat) {
+        <option [value]="cat">{{ cat }}</option>
+      }
+    </select>
+
+    <select class="sort-select" [value]="sortOption()" (change)="onSortChange($event)">
+      @for (opt of sortOptions; track opt.value) {
+        <option [value]="opt.value">{{ opt.label }}</option>
+      }
+    </select>
+
+    <button class="clear-btn" (click)="clearFilters()">Clear</button>
+  </div>
+
   <div class="product-grid">
-    @for (dessert of desserts; track dessert.id) {
+    @for (dessert of desserts(); track dessert.id) {
       <app-product-card [dessert]="dessert" />
+    }
+    @if (desserts().length === 0) {
+      <p class="no-results">No desserts match your search.</p>
     }
   </div>
 </section>
