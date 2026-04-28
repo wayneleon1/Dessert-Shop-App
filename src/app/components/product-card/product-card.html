@@ -38,6 +38,6 @@
   <div class="product-info">
     <span class="product-category">{{ dessert.category }}</span>
     <h3 class="product-name">{{ dessert.name }}</h3>
-    <p class="product-price">${{ dessert.price.toFixed(2) }}</p>
+    <p class="product-price">{{ formatPrice(dessert.price) }}</p>
   </div>
 </div>

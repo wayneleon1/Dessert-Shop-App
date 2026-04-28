@@ -2,6 +2,7 @@ import { Component, Input, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Dessert } from '../../models/dessert.model';
 import { CartService } from '../../services/cart.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,6 +15,11 @@ export class ProductCardComponent {
   @Input({ required: true }) dessert!: Dessert;
 
   private cartService = inject(CartService);
+  private utility = inject(UtilityService);
+
+  formatPrice(amount: number): string {
+    return this.utility.formatCurrency(amount);
+  }
 
   get quantity(): number {
     return this.cartService.getQuantity(this.dessert.id);

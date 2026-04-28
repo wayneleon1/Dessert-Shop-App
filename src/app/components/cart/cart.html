@@ -1,7 +1,7 @@
 <aside class="cart-panel">
   <h2 class="cart-title">Your Cart ({{ totalItems }})</h2>
 
-  <!-- ── Restored-cart banner ─────────────────────────────────────────────── -->
+  <!-- ── Restored-cart banner  -->
   @if (cartRestored()) {
     <div class="restored-banner" role="status" aria-live="polite">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -29,8 +29,8 @@
             <p class="item-name">{{ item.dessert.name }}</p>
             <div class="item-meta">
               <span class="item-qty">{{ item.quantity }}x</span>
-              <span class="item-unit-price">&#64; ${{ item.dessert.price.toFixed(2) }}</span>
-              <span class="item-total">${{ (item.quantity * item.dessert.price).toFixed(2) }}</span>
+              <span class="item-unit-price">&#64; {{ formatPrice(item.dessert.price) }}</span>
+              <span class="item-total">{{ formatPrice(item.quantity * item.dessert.price) }}</span>
             </div>
           </div>
           <button
@@ -63,7 +63,7 @@
 
     <button class="confirm-btn" (click)="onConfirmOrder()">Confirm Order</button>
 
-    <!-- ── Clear stored cart ───────────────────────────────────────────────── -->
+    <!-- ── Clear stored cart  -->
     <button
       class="clear-storage-btn"
       (click)="clearStoredCart()"

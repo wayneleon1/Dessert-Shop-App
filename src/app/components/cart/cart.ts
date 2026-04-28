@@ -1,6 +1,7 @@
 import { Component, inject, output, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,11 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent {
   private cartService = inject(CartService);
+  private utility = inject(UtilityService);
+
+  formatPrice(amount: number): string {
+    return this.utility.formatCurrency(amount);
+  }
 
   readonly confirmOrder = output<void>();
 
@@ -31,8 +37,9 @@ export class CartComponent {
   get totalItems() {
     return this.cartService.totalItems();
   }
+
   get formattedOrderTotal() {
-    return this.cartService.formattedOrderTotal();
+    return this.formatPrice(this.cartService.orderTotal());
   }
 
   removeItem(dessertId: number): void {

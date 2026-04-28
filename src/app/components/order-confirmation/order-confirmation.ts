@@ -2,16 +2,22 @@ import { Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../models/dessert.model';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-order-confirmation',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './order-confirmation.html',
-  styleUrl: './order-confirmation.css'
+  styleUrl: './order-confirmation.css',
 })
 export class OrderConfirmationComponent {
   private cartService = inject(CartService);
+  private utility = inject(UtilityService);
+
+  formatPrice(amount: number): string {
+    return this.utility.formatCurrency(amount);
+  }
 
   readonly startNewOrder = output<void>();
 

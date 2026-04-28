@@ -19,18 +19,16 @@
             <p class="item-name">{{ item.dessert.name }}</p>
             <p class="item-qty-price">
               <span class="qty">{{ item.quantity }}x</span>
-              <span class="unit-price">&#64; ${{ item.dessert.price.toFixed(2) }}</span>
+              <span class="unit-price">&#64; {{ formatPrice(item.dessert.price) }}</span>
             </p>
           </div>
-          <span class="item-line-total"
-            >${{ (item.quantity * item.dessert.price).toFixed(2) }}</span
-          >
+          <span class="item-line-total">{{ formatPrice(item.quantity * item.dessert.price) }}</span>
         </div>
       }
 
       <div class="total-row">
         <span class="total-label">Order Total</span>
-        <span class="total-amount">${{ confirmedTotal.toFixed(2) }}</span>
+        <span class="total-amount">{{ formatPrice(confirmedTotal) }}</span>
       </div>
     </div>
 
