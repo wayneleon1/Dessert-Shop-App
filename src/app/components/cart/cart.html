@@ -1,6 +1,19 @@
 <aside class="cart-panel">
   <h2 class="cart-title">Your Cart ({{ totalItems }})</h2>
 
+  <!-- ── Restored-cart banner ─────────────────────────────────────────────── -->
+  @if (cartRestored()) {
+    <div class="restored-banner" role="status" aria-live="polite">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d="M8 1.5A6.5 6.5 0 1 0 14.5 8 6.507 6.507 0 0 0 8 1.5ZM7.25 4.75a.75.75 0 0 1 1.5 0v3.5a.75.75 0 0 1-1.5 0Zm.75 6.5a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75Z"
+          fill="currentColor"
+        />
+      </svg>
+      Your previous cart has been restored from this device.
+    </div>
+  }
+
   @if (items.length === 0) {
     <div class="cart-empty">
       <div class="empty-illustration">
@@ -20,7 +33,11 @@
               <span class="item-total">${{ (item.quantity * item.dessert.price).toFixed(2) }}</span>
             </div>
           </div>
-          <button class="remove-btn" (click)="removeItem(item.dessert.id)" aria-label="Remove item">
+          <button
+            class="remove-btn"
+            (click)="removeItem(item.dessert.id)"
+            aria-label="Remove {{ item.dessert.name }}"
+          >
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path
                 d="M1 1L9 9M9 1L1 9"
@@ -36,15 +53,31 @@
 
     <div class="order-total-row">
       <span class="total-label">Order Total</span>
-      <span class="total-amount">${{ orderTotal.toFixed(2) }}</span>
+      <span class="total-amount">{{ formattedOrderTotal }}</span>
     </div>
 
     <div class="carbon-neutral-badge">
       <img src="assets/images/icon-carbon-neutral.svg" alt="" />
-
       <p>This is a <strong>carbon-neutral</strong> delivery</p>
     </div>
 
     <button class="confirm-btn" (click)="onConfirmOrder()">Confirm Order</button>
+
+    <!-- ── Clear stored cart ───────────────────────────────────────────────── -->
+    <button
+      class="clear-storage-btn"
+      (click)="clearStoredCart()"
+      title="Remove saved cart data from this device"
+    >
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path
+          d="M1 1L11 11M11 1L1 11"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+      Clear saved cart
+    </button>
   }
 </aside>

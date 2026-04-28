@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, inject, output, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 
@@ -7,19 +7,40 @@ import { CartService } from '../../services/cart.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cart.html',
-  styleUrl: './cart.css'
+  styleUrl: './cart.css',
 })
 export class CartComponent {
   private cartService = inject(CartService);
 
   readonly confirmOrder = output<void>();
 
-  get items() { return this.cartService.items(); }
-  get totalItems() { return this.cartService.totalItems(); }
-  get orderTotal() { return this.cartService.orderTotal(); }
+  /** True for 4 s after the app starts with a non-empty restored cart. */
+  readonly cartRestored = signal(false);
+
+  constructor() {
+    // Show a "cart restored" banner if items were loaded from localStorage
+    if (this.cartService.totalItems() > 0) {
+      this.cartRestored.set(true);
+      setTimeout(() => this.cartRestored.set(false), 4000);
+    }
+  }
+
+  get items() {
+    return this.cartService.items();
+  }
+  get totalItems() {
+    return this.cartService.totalItems();
+  }
+  get formattedOrderTotal() {
+    return this.cartService.formattedOrderTotal();
+  }
 
   removeItem(dessertId: number): void {
     this.cartService.removeItem(dessertId);
+  }
+
+  clearStoredCart(): void {
+    this.cartService.clearStoredCart();
   }
 
   onConfirmOrder(): void {
