@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class UtilityService {
-  // ── Currency / number formatting ───────────────────────────────────────────
-
   /**
    * Formats a number as a locale-aware currency string.
    * @example formatCurrency(4.5)  → "$4.50"
@@ -77,7 +75,7 @@ export class UtilityService {
     );
   }
 
-  // ── Date helpers ───────────────────────────────────────────────────────────
+  //  Date helpers
 
   /** Returns a human-readable date/time string for "now". */
   formatNow(locale = 'en-US'): string {

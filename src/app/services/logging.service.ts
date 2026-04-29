@@ -49,7 +49,6 @@ export class LoggingService {
 
   /**
    * Records a user-initiated action (add-to-cart, remove, confirm order, etc.)
-   * This is the primary method components should call for user interaction tracking.
    */
   action(message: string, context?: Record<string, unknown>): void {
     this._append('action', message, context);
@@ -62,7 +61,6 @@ export class LoggingService {
   }
 
   // ── Private helpers ────────────────────────────────────────────────────────
-
   private _append(level: LogLevel, message: string, context?: Record<string, unknown>): void {
     const entry: LogEntry = {
       id: ++this._counter,

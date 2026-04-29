@@ -19,7 +19,6 @@ export class ProductService {
   private readonly _selectedCategory = signal<string>('');
 
   // ── Public read-only signals ────────────────────────────────────────────────
-
   readonly searchTerm = this._searchTerm.asReadonly();
   readonly sortOption = this._sortOption.asReadonly();
   readonly selectedCategory = this._selectedCategory.asReadonly();
@@ -92,7 +91,6 @@ export class ProductService {
 
   /**
    * Returns a formatted display name for a dessert
-   * (useful when you need programmatic access, not just template pipes).
    */
   formatName(dessert: Dessert): string {
     return dessert.name.trim();
